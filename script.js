@@ -59,10 +59,20 @@ function game(){
         round.textContent = `Round: ${playCount}`;
         player.textContent = `Player: ${playerScore}`;
         computer.textContent = `Computer: ${computerScore}`;
-
+        
         gameResult.textContent = '';
         gameOver.textContent = '';
-        if (playCount === 5) {
+        if (playCount < 5) {
+            if (playerScore >= 3) {
+                gameResult.textContent = "player wins game"
+                resetGame();
+                gameOver.textContent = ("Game Over")
+            } else if (computerScore >= 3) {
+                gameResult.textContent = 'computer wins game'
+                resetGame();
+                gameOver.textContent = ("Game Over")
+            } 
+        } else if (playCount === 5) {
             if (playerScore > computerScore) {
                 gameResult.textContent = "player wins game"
             } else if (computerScore > playerScore) {
@@ -70,15 +80,13 @@ function game(){
             } else {
                 gameResult.textContent = 'tied game'
             } 
-            gameOver.textContent = ("Game has restarted")
             resetGame();
-        } 
-    }
+            gameOver.textContent = ("Game Over")
+            
+    }}
 
 function resetGame() {
     playCount = 0;
     playerScore = 0;
     computerScore = 0; 
 }
-  
-
