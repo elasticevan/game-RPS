@@ -6,35 +6,32 @@ const winningMove = {
     'paper' : 'rock'
 }
 
+let computerSelection;
 function getComputerChoice() {
     const randomChoice = moves[Math.floor(Math.random() * 3)]
     return randomChoice
 }
 
+
 let playerScore = 0
 let computerScore = 0
 let playCount = 0
 
+const round = document.createElement('div')
+const player = document.createElement('div')
+const computer = document.createElement('div')
+document.body.appendChild(round)
+document.body.appendChild(player)
+document.body.appendChild(computer)
 
-
-
-let computerSelection;
 const buttons = document.querySelectorAll('button');
-
 buttons.forEach(button => {
     button.addEventListener("click", () => {  
         playerSelection = button.id;
         computerSelection = getComputerChoice();
         game();
-    })})
-
-const round = document.createElement('div')
-document.body.appendChild(round)
-const player = document.createElement('div')
-document.body.appendChild(player)
-const computer = document.createElement('div')
-document.body.appendChild(computer)
-
+    })
+})
 
 function playRound() {
         playCount++;
@@ -49,7 +46,6 @@ function playRound() {
         }
     }
 
-
 const result = document.createElement('div');
 const gameResult = document.createElement('div');
 const gameOver = document.createElement('div');
@@ -63,6 +59,9 @@ function game(){
         round.textContent = `Round: ${playCount}`;
         player.textContent = `Player: ${playerScore}`;
         computer.textContent = `Computer: ${computerScore}`;
+
+        gameResult.textContent = '';
+        gameOver.textContent = '';
         if (playCount === 5) {
             if (playerScore > computerScore) {
                 gameResult.textContent = "player wins game"
@@ -71,17 +70,15 @@ function game(){
             } else {
                 gameResult.textContent = 'tied game'
             } 
-            
             gameOver.textContent = ("Game has restarted")
             resetGame();
-}
-}
+        } 
+    }
 
 function resetGame() {
     playCount = 0;
     playerScore = 0;
     computerScore = 0; 
 }
-
-
+  
 
