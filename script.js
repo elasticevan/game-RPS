@@ -66,11 +66,11 @@ function game(){
             if (playerScore >= 3) {
                 gameResult.textContent = "player wins game"
                 resetGame();
-                gameOver.textContent = ("Game Over")
+                gameOver.textContent = "Game Over"
             } else if (computerScore >= 3) {
                 gameResult.textContent = 'computer wins game'
                 resetGame();
-                gameOver.textContent = ("Game Over")
+                gameOver.textContent = "Game Over"
             } 
         } else if (playCount === 5) {
             if (playerScore > computerScore) {
@@ -81,7 +81,7 @@ function game(){
                 gameResult.textContent = 'tied game'
             } 
             resetGame();
-            gameOver.textContent = ("Game Over")
+            gameOver.textContent = "Game Over"
             
     }}
 
